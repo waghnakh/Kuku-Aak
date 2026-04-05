@@ -39,7 +39,7 @@
             max-width: 700px;
             box-shadow: 0 10px 30px rgba(216, 27, 96, 0.15);
             position: relative;
-            z-index: 10; /* Keeps content above floating hearts */
+            z-index: 10;
         }
 
         .clocks, .timer {
@@ -95,7 +95,7 @@
             color: rgba(255, 105, 180, 0.4);
             font-size: 1.5rem;
             pointer-events: none;
-            z-index: 1; /* Behind containers */
+            z-index: 1;
             animation: floatAndSway 12s infinite ease-in;
         }
 
@@ -150,10 +150,8 @@
     </div>
 
     <script>
-        // --- YOUR UNIQUE URL ---
         const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwEn6FsIWzlskDrWvQAatMPMxUkR32k_YClPoHiBFkhvlK5szl3oYYh_3JXeBdwDDWHgQ/exec";
 
-        // 1. UPLOAD
         function uploadPhoto() {
             const file = document.getElementById('photoInput').files[0];
             const status = document.getElementById('status');
@@ -178,7 +176,6 @@
             reader.readAsDataURL(file);
         }
 
-        // 2. GALLERY LOADING
         function loadGallery() {
             const gallery = document.getElementById('photo-gallery');
             gallery.innerHTML = "<p>Loading memories...</p>";
@@ -188,7 +185,7 @@
                     gallery.innerHTML = "";
                     files.forEach(file => {
                         const img = document.createElement('img');
-                        const displayUrl = `https://lh3.googleusercontent.com/d/${file.id}`; // High-res Google Drive trick
+                        const displayUrl = `https://lh3.googleusercontent.com/d/${file.id}`;
                         img.src = displayUrl;
                         img.onclick = (e) => { e.stopPropagation(); openImage(displayUrl); };
                         gallery.appendChild(img);
@@ -199,7 +196,6 @@
         function openImage(url) { document.getElementById('fullImage').src = url; document.getElementById('imageModal').classList.add('active'); }
         function closeImage() { document.getElementById('imageModal').classList.remove('active'); }
 
-        // 3. MOVING HEARTS ENGINE
         function spawnHeart() {
             const hearts = ['❤️', '💖', '💗', '💓', '💕'];
             const heart = document.createElement('div');
@@ -211,9 +207,8 @@
             document.body.appendChild(heart);
             setTimeout(() => heart.remove(), 12000);
         }
-        setInterval(spawnHeart, 800); // Spawns a heart every 0.8 seconds
+        setInterval(spawnHeart, 800);
 
-        // 4. CLICK BURST (Click anywhere for a heart explosion)
         function createBurst(e) {
             for(let i=0; i<8; i++) {
                 const h = document.createElement('div');
@@ -225,10 +220,8 @@
                 h.style.transition = 'all 1s ease-out';
                 h.style.zIndex = '3000';
                 document.body.appendChild(h);
-                
                 const destX = e.clientX + (Math.random() - 0.5) * 300;
                 const destY = e.clientY + (Math.random() - 0.5) * 300;
-                
                 setTimeout(() => {
                     h.style.transform = `translate(${destX - e.clientX}px, ${destY - e.clientY}px) scale(0)`;
                     h.style.opacity = '0';
@@ -237,7 +230,6 @@
             }
         }
 
-        // 5. TIMERS
         const startDate = new Date("2026-04-04T00:00:00").getTime();
         setInterval(() => {
             const now = new Date().getTime();
