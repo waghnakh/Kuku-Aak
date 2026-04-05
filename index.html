@@ -3,252 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aakash & Kuku ❤️ Our Story</title>
+    <title>Aakash & Kuku ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* --- CORE ROMANTIC THEME --- */
         body {
-            /* Deeper, richer romantic gradient */
             background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
             min-height: 100vh;
             margin: 0;
             font-family: 'Quicksand', sans-serif;
             text-align: center;
             color: #d81b60;
-            /* Crucial for background hearts */
-            overflow-x: hidden; 
+            overflow-x: hidden;
             position: relative;
         }
 
-        /* --- HEARTBEAT TITLE ANIMATION --- */
         h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: 4rem;
-            margin-top: 50px;
+            font-size: 3.5rem;
+            margin-top: 40px;
             color: #c2185b;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
             animation: heartbeat 2s infinite;
         }
 
         @keyframes heartbeat {
-            0% { transform: scale(1); text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
-            14% { transform: scale(1.1); text-shadow: 0 0 10px #ff4081; }
-            28% { transform: scale(1); text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
-            42% { transform: scale(1.1); text-shadow: 0 0 10px #ff4081; }
-            70% { transform: scale(1); text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+            0%, 28%, 70% { transform: scale(1); }
+            14%, 42% { transform: scale(1.1); }
         }
 
-        /* --- CONTAINERS & LAYOUT --- */
         .container {
-            /* Slightly clearer background to pop against moving hearts */
-            background: rgba(255, 255, 255, 0.85); 
+            background: rgba(255, 255, 255, 0.85);
             border-radius: 25px;
-            padding: 35px;
-            margin: 25px auto;
+            padding: 30px;
+            margin: 20px auto;
             max-width: 600px;
-            box-shadow: 0 15px 30px rgba(216, 27, 96, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            /* Keep content above background hearts */
-            position: relative; 
-            z-index: 10; 
+            box-shadow: 0 10px 20px rgba(216, 27, 96, 0.1);
+            position: relative;
+            z-index: 10;
         }
 
-        h2 {
-            font-size: 1.8rem;
-            color: #ad1457;
-            margin-top: 0;
-        }
-
-        /* Romantic dividers between containers */
-        .heart-divider {
-            font-size: 1.5rem;
-            color: rgba(216, 27, 96, 0.3);
-            margin: 15px 0;
-            position: relative; z-index: 10;
-        }
-
-        /* --- CLOCKS & TIMER --- */
         .clocks, .timer {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: bold;
-            margin: 20px 0;
-            color: #c2185b;
+            margin: 15px 0;
+            color: #ad1457;
             display: flex;
             justify-content: space-around;
-            align-items: center;
         }
 
-        .time-box p { margin: 0; font-size: 1rem; color: #d81b60; opacity: 0.8; }
-        .time-box div { font-size: 1.4rem; margin-top: 5px; }
-
-        /* --- BUTTONS & INPUTS --- */
         .action-btn {
             background: linear-gradient(45deg, #ff4081, #ff80ab);
             color: white;
             border: none;
-            padding: 12px 28px;
-            font-size: 1.1rem;
+            padding: 12px 25px;
             border-radius: 50px;
             cursor: pointer;
-            font-family: 'Quicksand', sans-serif;
             font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
+            font-family: 'Quicksand', sans-serif;
+            transition: 0.3s;
             margin-top: 10px;
         }
 
-        .action-btn:hover { 
-            transform: translateY(-3px) scale(1.03); 
-            box-shadow: 0 8px 20px rgba(255, 64, 129, 0.6);
-            background: linear-gradient(45deg, #f50057, #ff4081);
-        }
+        .action-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4); }
 
-        .action-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; box-shadow: none; }
-
-        input[type="file"] {
-            background: #fff;
-            padding: 12px;
-            border-radius: 15px;
-            border: 2px dashed #ff80ab;
-            color: #d81b60;
-            font-family: 'Quicksand', sans-serif;
-            margin-bottom: 15px;
-            width: 80%;
-        }
-
-        /* --- HEART-SHAPED GALLERY --- */
+        /* --- HEART SHAPED GALLERY --- */
         .gallery {
             display: grid;
-            /* Slightly smaller min-size to handle heart shape padding */
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); 
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
             margin-top: 25px;
-            padding: 10px;
         }
 
         .gallery img {
-            width: 100%;
-            height: 140px;
+            width: 130px;
+            height: 130px;
             object-fit: cover;
-            /* --- THE HEART SHAPE MAGIC --- */
+            /* Romantic Heart Shape */
             clip-path: path('M12 4.419c-2.826-2.795-7.192-2.795-10.017 0-2.825 2.793-2.825 7.329 0 10.122l8.803 8.71 1.214 1.21 1.214-1.21 8.803-8.71c2.825-2.793 2.825-7.329 0-10.122-2.825-2.795-7.191-2.795-10.017 0z');
-            /* Fallback for browsers that struggle with clip-path path */
-            border-radius: 50% 50% 0 0; 
-            
-            box-shadow: 0 8px 15px rgba(216, 27, 96, 0.2);
-            transition: transform 0.3s ease;
+            transition: 0.4s;
+            background: #fff;
         }
 
-        .gallery img:hover {
-            transform: scale(1.1) rotate(3deg);
-            z-index: 15;
-        }
+        .gallery img:hover { transform: scale(1.1) rotate(5deg); }
 
-        /* --- BACKGROUND FLOATING HEARTS (Passive) --- */
         .bg-heart {
             position: fixed;
-            color: rgba(255, 182, 193, 0.6); /* Soft pink, semi-transparent */
+            color: rgba(255, 182, 193, 0.4);
             font-size: 1.5rem;
             pointer-events: none;
-            z-index: 1; /* Behind everything */
-            animation: floatBackground infinite linear;
+            z-index: 1;
+            animation: floatUp 10s infinite linear;
         }
 
-        @keyframes floatBackground {
+        @keyframes floatUp {
             0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
+            50% { opacity: 0.8; }
             100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
-
-        /* --- VIRTUAL HUG HEARTS (Active click) --- */
-        .hug-heart {
-            position: fixed;
-            font-size: 2.5rem;
-            color: #ff4081;
-            pointer-events: none;
-            z-index: 100; /* In front of everything */
-            animation: explodeHeart 3s ease-out forwards;
-        }
-
-        @keyframes explodeHeart {
-            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-            100% { transform: translate(var(--tx), var(--ty)) scale(1.5) rotate(var(--tr)); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
     <h1>Aakash & Kuku</h1>
-    <div class="heart-divider">💖 ─── ❤️ ─── 💖</div>
 
     <div class="container">
         <div class="clocks">
-            <div class="time-box">
-                <p>Aakash (NL)</p>
-                <div id="clock1">Loading...</div>
-            </div>
-            <div style="font-size: 2rem; color: #ff80ab;">✈️</div>
-            <div class="time-box">
-                <p>Kuku (Bhopal)</p>
-                <div id="clock2">Loading...</div>
-            </div>
+            <div><p>Aakash (NL)</p><div id="clock1">...</div></div>
+            <div style="font-size: 1.5rem;">✈️</div>
+            <div><p>Kuku (Bhopal)</p><div id="clock2">...</div></div>
         </div>
-        <h2>Together for:</h2>
         <div class="timer" id="love-timer">Loading our time...</div>
     </div>
 
-    <div class="heart-divider">💌</div>
-
-    <div class="container gallery-container">
-        <h2>Our Heartfelt Memories</h2>
-        <input type="file" id="photo-upload" accept="image/*">
+    <div class="container">
+        <h2>Add a Memory 📸</h2>
+        <input type="file" id="photoInput" accept="image/*" style="margin-bottom: 10px;">
         <br>
-        <button class="action-btn" id="upload-btn">Add to Gallery 📸</button>
-        <p id="upload-status" style="font-size: 0.9rem; margin-top: 10px; font-weight: bold;"></p>
-        
+        <button class="action-btn" id="uploadBtn" onclick="uploadPhoto()">Upload to our Drive</button>
+        <p id="status" style="font-size: 0.9rem; margin-top: 10px;"></p>
+    </div>
+
+    <div class="container">
+        <h2>Our Heartfelt Gallery</h2>
         <div class="gallery" id="photo-gallery">
             </div>
     </div>
 
-    <div class="heart-divider">💝</div>
-
-    <div class="container">
-        <h2>Missing me?</h2>
-        <p style="margin-top: 0; color: #ad1457;">Click for a virtual squeeze!</p>
-        <button class="action-btn" onclick="sendHug(event)">Send a Virtual Hug 💖</button>
-    </div>
-    
-    <div style="margin-bottom: 50px;"></div>
-
     <script>
-        // --- 1. THE PASSIVE BACKGROUND HEART GENERATOR ---
-        // Generates continuous floating hearts behind the content
-        function createBackgroundHearts() {
-            const heartHtml = '❤️'; // You can mix '💖', '💗', '❤️'
-            const heart = document.createElement('div');
-            heart.className = 'bg-heart';
-            heart.innerHTML = heartHtml;
-            
-            // Randomize position and animation details
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.fontSize = (Math.random() * 1 + 1) + 'rem'; // 1rem to 2rem
-            
-            // Random duration between 10s and 20s for visual depth
-            const duration = Math.random() * 10 + 10;
-            heart.style.animationDuration = duration + 's';
-            
-            document.body.appendChild(heart);
-            
-            // Remove from DOM after animation finishes to keep memory low
-            setTimeout(() => { heart.remove(); }, duration * 1000);
+        // --- PASTE YOUR GOOGLE WEB APP URL HERE ---
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwEn6FsIWzlskDrWvQAatMPMxUkR32k_YClPoHiBFkhvlK5szl3oYYh_3JXeBdwDDWHgQ/exec";
+
+        // 1. Upload Function
+        function uploadPhoto() {
+            const file = document.getElementById('photoInput').files[0];
+            const status = document.getElementById('status');
+            const btn = document.getElementById('uploadBtn');
+
+            if (!file) return alert("Select a photo first! 💕");
+
+            status.innerText = "Sending to our Drive... ✨";
+            btn.disabled = true;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64 = e.target.result;
+                fetch(WEB_APP_URL, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        base64: base64,
+                        type: file.type,
+                        name: file.name
+                    })
+                })
+                .then(r => r.json())
+                .then(data => {
+                    status.innerText = "Saved forever! 💖";
+                    btn.disabled = false;
+                    document.getElementById('photoInput').value = "";
+                    loadGallery(); // Refresh gallery
+                })
+                .catch(err => {
+                    status.innerText = "Error! Try again.";
+                    btn.disabled = false;
+                });
+            };
+            reader.readAsDataURL(file);
         }
 
-        // Start generating hearts continuously
-        setInterval(createBackgroundHearts, 500); // New heart every 0.5 seconds
+        // 2. Load Gallery Function
+        function loadGallery() {
+            const gallery = document.getElementById('photo-gallery');
+            gallery.innerHTML = "<p>Loading memories...</p>";
 
+            fetch(WEB_APP_URL)
+                .then(r => r.json())
+                .then(files => {
+                    gallery.innerHTML = "";
+                    if(files.length === 0) gallery.innerHTML = "<p>Our gallery is empty. Add a photo! 💌</p>";
+                    
+                    files.forEach(file => {
+                        const img = document.createElement('img');
+                        // Use the Direct Drive display link
+                        img.src = `https://lh3.googleusercontent.com/d/${file.id}`;
+                        gallery.appendChild(img);
+                    });
+                });
+        }
 
-        // --- 2. STANDARD TIMERS & CLOCKS (Aakash & Kuku customized) ---
+        // 3. Timers & Clocks
         const startDate = new Date("2026-04-04T00:00:00").getTime();
         setInterval(() => {
             const now = new Date().getTime();
@@ -258,147 +199,25 @@
                 Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) + "h " + 
                 Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)) + "m " + 
                 Math.floor((diff % (1000 * 60)) / 1000) + "s";
+            
+            const timeOptions = { hour: '2-digit', minute: '2-digit' };
+            document.getElementById("clock1").innerText = new Date().toLocaleTimeString('en-US', { ...timeOptions, timeZone: 'Europe/Amsterdam' });
+            document.getElementById("clock2").innerText = new Date().toLocaleTimeString('en-US', { ...timeOptions, timeZone: 'Asia/Kolkata' });
         }, 1000);
 
+        // 4. Floating Hearts
         setInterval(() => {
-            const now = new Date();
-            document.getElementById("clock1").innerText = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Amsterdam' });
-            document.getElementById("clock2").innerText = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }); 
-        }, 1000);
+            const heart = document.createElement('div');
+            heart.className = 'bg-heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 10000);
+        }, 800);
 
-
-        // --- 3. THE VIRTUAL HUG EXPLOSION ---
-        function sendHug(e) {
-            // Heart varieties
-            const hearts = ['💖', '💝', '💓', '💗', '❤️'];
-            
-            for(let i = 0; i < 12; i++) { // More hearts for a bigger hug
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
-                    heart.className = 'hug-heart';
-                    
-                    // Center the explosion on the click/tap
-                    heart.style.left = e.clientX + 'px';
-                    heart.style.top = e.clientY + 'px';
-                    
-                    // Set random explosion trajectories using CSS variables
-                    // Explode outward within a 300px radius
-                    const tx = (Math.random() - 0.5) * 600; 
-                    const ty = (Math.random() - 0.5) * 600;
-                    const tr = (Math.random() - 0.5) * 90; // Random rotation
-
-                    heart.style.setProperty('--tx', tx + 'px');
-                    heart.style.setProperty('--ty', ty + 'px');
-                    heart.style.setProperty('--tr', tr + 'deg');
-                    
-                    document.body.appendChild(heart);
-                    
-                    // Remove after animation
-                    setTimeout(() => heart.remove(), 3000);
-                }, i * 50); // Fast stagger
-            }
-        }
-    </script>
-
-
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-        import { getStorage, ref, uploadBytesResumable, getDownloadURL, listAll } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
-
-        // --- YOUR SECRETS (Keep these!) ---
-        const firebaseConfig = {
-            apiKey: "AIzaSyDMe6iCIaQ9CODno4PS6s6G63VzIry-IrQ",
-            authDomain: "aak-kuku.firebaseapp.com",
-            projectId: "aak-kuku",
-            storageBucket: "aak-kuku.firebasestorage.app",
-            messagingSenderId: "1084958191364",
-            appId: "1:1084958191364:web:70ffc3576a954ed007ea51"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const storage = getStorage(app);
-
-        const uploadBtn = document.getElementById('upload-btn');
-        const fileInput = document.getElementById('photo-upload');
-        const statusText = document.getElementById('upload-status');
-        const gallery = document.getElementById('photo-gallery');
-
-        function loadGallery() {
-            gallery.innerHTML = '';
-            statusText.innerText = "Loading our hearts... 💕";
-            statusText.style.color = "#d81b60";
-
-            const listRef = ref(storage, 'memories/');
-            listAll(listRef).then((res) => {
-                if (res.items.length === 0) {
-                    statusText.innerText = "Our gallery is waiting for its first memory! 🥰";
-                    return;
-                }
-                
-                // Sort items by name (since names start with timestamp, this shows newest first)
-                res.items.sort((a, b) => b.name.localeCompare(a.name));
-
-                res.items.forEach((itemRef) => {
-                    getDownloadURL(itemRef).then((url) => {
-                        const img = document.createElement('img');
-                        img.src = url;
-                        img.alt = "Aakash & Kuku Memory";
-                        gallery.appendChild(img);
-                        // Clear loading status once images start appearing
-                        statusText.innerText = ""; 
-                    });
-                });
-            }).catch((error) => {
-                console.log("Gallery loading error: ", error);
-                statusText.innerText = "Couldn't load gallery. (Check Firebase Rules!)";
-                statusText.style.color = "red";
-            });
-        }
-
+        // Initial Load
         loadGallery();
-
-        uploadBtn.addEventListener('click', () => {
-            const file = fileInput.files[0];
-            if (!file) {
-                statusText.innerText = "Please select a beautiful photo first! 👇";
-                statusText.style.color = "red";
-                return;
-            }
-
-            // Create a unique name: Timestamp-filename
-            const uniqueName = Date.now() + '-' + file.name;
-            const storageRef = ref(storage, 'memories/' + uniqueName);
-            
-            statusText.innerText = "Saving our memory to the cloud... ✨";
-            statusText.style.color = "#d81b60";
-            uploadBtn.disabled = true;
-            uploadBtn.innerText = "Uploading...";
-
-            const uploadTask = uploadBytesResumable(storageRef, file);
-
-            uploadTask.on('state_changed', 
-                (snapshot) => {
-                    // Optional: Put progress percentage here if you want
-                }, 
-                (error) => {
-                    console.error("Upload error:", error);
-                    statusText.innerText = "Oops! Upload failed. (Check Storage Rules!)";
-                    statusText.style.color = "red";
-                    uploadBtn.disabled = false;
-                    uploadBtn.innerText = "Add to Gallery 📸";
-                }, 
-                () => {
-                    statusText.innerText = "Memory saved forever! 💖 Gallery updating...";
-                    statusText.style.color = "green";
-                    uploadBtn.disabled = false;
-                    uploadBtn.innerText = "Add to Gallery 📸";
-                    fileInput.value = ""; 
-                    // Stagger reload slightly to ensure Firebase has indexed the new file
-                    setTimeout(loadGallery, 1500); 
-                }
-            );
-        });
     </script>
 </body>
 </html>
