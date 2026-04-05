@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aakash & Kuku</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffe6ea 0%, #ffb6c1 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Quicksand', sans-serif;
+            text-align: center;
+            color: #d81b60;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            margin-top: 50px;
+            color: #c2185b;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 10px 20px rgba(255, 105, 180, 0.2);
+        }
+
+        .clocks, .timer {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #ad1457;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .action-btn {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: bold;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
+            margin-top: 10px;
+        }
+
+        .action-btn:hover { transform: scale(1.05); background-color: #f50057; }
+        .action-btn:disabled { background-color: #ccc; cursor: not-allowed; transform: none; }
+
+        input[type="file"] {
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px dashed #ff4081;
+            color: #d81b60;
+            font-family: 'Quicksand', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+            border: 3px solid white;
+        }
+
+        .heart {
+            position: fixed;
+            font-size: 2rem;
+            color: #ff4081;
+            pointer-events: none;
+            animation: floatUp 3s ease-in forwards;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-200px) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Aakash & Kuku</h1>
+
+    <div class="container">
+        <div class="clocks">
+            <div>
+                <p>Aakash (NL)</p>
+                <div id="clock1">Loading...</div>
+            </div>
+            <div>
+                <p>Kuku (Bhopal)</p>
+                <div id="clock2">Loading...</div>
+            </div>
+        </div>
+        <h2>Together for:</h2>
+        <div class="timer" id="love-timer">Loading our time...</div>
+    </div>
+
+    <div class="container">
+        <h2>Add to Our Memories</h2>
+        <input type="file" id="photo-upload" accept="image/*">
+        <br>
+        <button class="action-btn" id="upload-btn">Upload Photo 📸</button>
+        <p id="upload-status" style="font-size: 0.9rem; margin-top: 10px;"></p>
+    </div>
+
+    <div class="container">
+        <h2>Our Gallery</h2>
+        <div class="gallery" id="photo-gallery">
+            </div>
+    </div>
+
+    <div class="container">
+        <h2>Miss me?</h2>
+        <button class="action-btn" onclick="sendHug(event)">Send a Virtual Hug 💖</button>
+    </div>
+
+    <script>
+        const startDate = new Date("2026-04-04T00:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = now - startDate;
+            document.getElementById("love-timer").innerHTML = 
+                Math.floor(diff / (1000 * 60 * 60 * 24)) + "d, " + 
+                Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) + "h, " + 
+                Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)) + "m, " + 
+                Math.floor((diff % (1000 * 60)) / 1000) + "s";
+        }, 1000);
+
+        setInterval(() => {
+            const now = new Date();
+            document.getElementById("clock1").innerText = now.toLocaleTimeString('en-US', { timeZone: 'Europe/Amsterdam' });
+            document.getElementById("clock2").innerText = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata' }); 
+        }, 1000);
+
+        function sendHug(e) {
+            for(let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '💖';
+                    heart.className = 'heart';
+                    heart.style.left = (e.clientX - 20 + (Math.random() * 40 - 20)) + 'px';
+                    heart.style.top = (e.clientY - 20 + (Math.random() * 40 - 20)) + 'px';
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 3000);
+                }, i * 150); 
+            }
+        }
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+        import { getStorage, ref, uploadBytesResumable, getDownloadURL, listAll } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDMe6iCIaQ9CODno4PS6s6G63VzIry-IrQ",
+            authDomain: "aak-kuku.firebaseapp.com",
+            projectId: "aak-kuku",
+            storageBucket: "aak-kuku.firebasestorage.app",
+            messagingSenderId: "1084958191364",
+            appId: "1:1084958191364:web:70ffc3576a954ed007ea51"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const storage = getStorage(app);
+
+        const uploadBtn = document.getElementById('upload-btn');
+        const fileInput = document.getElementById('photo-upload');
+        const statusText = document.getElementById('upload-status');
+        const gallery = document.getElementById('photo-gallery');
+
+        // Function to load images from your database
+        function loadGallery() {
+            gallery.innerHTML = '';
+            const listRef = ref(storage, 'memories/');
+            listAll(listRef).then((res) => {
+                res.items.forEach((itemRef) => {
+                    getDownloadURL(itemRef).then((url) => {
+                        const img = document.createElement('img');
+                        img.src = url;
+                        gallery.appendChild(img);
+                    });
+                });
+            }).catch((error) => {
+                console.log("Gallery loading error: ", error);
+            });
+        }
+
+        // Load the gallery right away
+        loadGallery();
+
+        // Upload Button Logic
+        uploadBtn.addEventListener('click', () => {
+            const file = fileInput.files[0];
+            if (!file) {
+                statusText.innerText = "Please select a photo first!";
+                statusText.style.color = "red";
+                return;
+            }
+
+            // Create a unique name for the file so they don't overwrite each other
+            const uniqueName = Date.now() + '-' + file.name;
+            const storageRef = ref(storage, 'memories/' + uniqueName);
+            
+            statusText.innerText = "Uploading our memory... ✨";
+            statusText.style.color = "#d81b60";
+            uploadBtn.disabled = true;
+
+            const uploadTask = uploadBytesResumable(storageRef, file);
+
+            uploadTask.on('state_changed', 
+                (snapshot) => {}, 
+                (error) => {
+                    statusText.innerText = "Oops, something went wrong!";
+                    uploadBtn.disabled = false;
+                }, 
+                () => {
+                    statusText.innerText = "Memory saved forever! 💖";
+                    uploadBtn.disabled = false;
+                    fileInput.value = ""; // Clear the input
+                    loadGallery(); // Reload to show the new photo
+                }
+            );
+        });
+    </script>
+</body>
+</html>
